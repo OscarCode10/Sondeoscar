@@ -25,7 +25,13 @@
                         <th scope="row">${partiVO.getNumeroCertificacion()}</th>
                         <td>${partiVO.getFechaGeneracion()}</td>
                         <td>${partiVO.getIdPreguntasTemasFK()}</td>
-                        <td><a href="#" class="btn btn-primary">Generar</a></td>
+                        <td>
+                            <form method="get" action="vistas/reportes/participacion.jsp" target="_blank">
+                                <input type="hidden" name="idCiudadanoFK" value="${partiVO.getIdCiudadanoFK()}">
+                                <input type="hidden" name="idPreguntasTemasFK" value="${partiVO.getIdPreguntasTemasFK()}">
+                                <input type="submit" class="btn btn-primary" value="Generar Certificado"> 
+                            </form>
+                        </td>
                     </tr>
                 </tbody>
             </c:forEach>

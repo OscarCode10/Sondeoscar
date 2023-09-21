@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="28271176-fee4-4e05-8c2e-4c8e6c95cf0a">
+	<property name="ireport.zoom" value="1.771561000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString>
+		<![CDATA[select idParticipacion, fechaGeneracion, numeroCertificacion, respuestaPregunta, idPreguntasTemasFK, idCiudadanoFK, pre.tema, pre.pregunta, c.nombreCompleto, c.Apellidos, c.numeroDocumento from Participacion p
+inner join PreguntasTemas pre on p.idPreguntasTemasFK=pre.idPreguntasTemas
+inner join Ciudadano c on c.idCiudadano=p.idCiudadanoFK
+where  p.idCiudadanoFK = $P{idCiudadanoFK} and p.idPreguntasTemasFK=$P{idPreguntasTemasFK};]]>
+	</queryString>
+	<field name="fechaGeneracion" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numeroCertificacion" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tema" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombreCompleto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Apellidos" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numeroDocumento" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image>
+				<reportElement x="263" y="0" width="300" height="64" uuid="c9e9b79d-539c-454b-8951-31bb913a2833"/>
+				<imageExpression><![CDATA["leaf_banner_green.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="2c2d8493-82bb-4f18-bf92-69129c2a73f7"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Certificación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="100" y="46" width="174" height="22" uuid="f1e6f2db-9261-490e-8d2e-36b5efe10f48"/>
+				<text><![CDATA[Participación]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="427" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="759eccd9-81b8-40ef-a4eb-da8f90c96903"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="36" width="555" height="1" uuid="39d01b82-f216-43e1-850b-499877e95731"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="81" y="297" width="237" height="37" uuid="416b2d31-84e8-46e4-8581-85c68d697ae6"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fechaGeneracion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="319" y="336" width="195" height="39" uuid="538bbd8d-2f02-47a4-96b5-436619944e21"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numeroCertificacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="236" y="260" width="278" height="37" uuid="9e94c937-3a6c-490a-b7f4-9942c6235ef8"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tema}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="236" y="144" width="277" height="39" uuid="fb5edbc9-9b31-4479-bdea-0bc4e9633f6c"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Apellidos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="39" y="218" width="474" height="40" uuid="659b34b4-91d0-40ac-832a-1f5ad52d6059"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numeroDocumento}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="393" width="555" height="1" uuid="a67443e2-a421-4398-a25a-0699a492208f"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="SubTitle" x="38" y="109" width="475" height="35" uuid="3ca4a72e-727f-4310-b1ad-fc1b539931db"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Este documento certifica que el ciudadano]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="39" y="144" width="197" height="39" uuid="a4ec1bb8-86fd-4871-ba00-35118e818053"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombreCompleto}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="SubTitle" x="318" y="219" width="195" height="39" uuid="cd75b342-7440-4601-b405-acdc9444fdb0"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[respondió]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="39" y="297" width="42" height="39" uuid="44694de5-6656-4e4e-a4e9-61abb105bf6c"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[el]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="39" y="183" width="475" height="35" uuid="2ea10074-5e43-4992-a2bf-30fcca065ea5"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[identificado con el numero de documento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="38" y="258" width="198" height="39" uuid="917798d6-d442-4352-9b74-bda81f4d78d9"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[el tema/pregunta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="319" y="295" width="195" height="39" uuid="d704c7d8-d8b8-4c49-a6bf-ef64cb4a62f5"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[respondio ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="41" y="336" width="278" height="39" uuid="3983f6ac-586a-4239-bd29-795445fd3c87"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[con el número erradicado]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="d43fd7ce-4a92-401b-83a3-77acf2f6fdd9"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="1ae8946d-3803-44c2-a893-3ec709013cd1"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="5258c185-127c-49ea-bf19-e023f16c5e12"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

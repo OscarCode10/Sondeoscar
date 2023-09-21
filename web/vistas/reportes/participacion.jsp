@@ -13,7 +13,7 @@
     </head>
     <body>
         <%
-            File reporte = new File(application.getRealPath("ParticipacionCiu.jasper"));
+            File reporte = new File(application.getRealPath("vistas/reportes/ParticipacionCiu.jasper"));
             Map<String, Object> parametros = new HashMap<String, Object>();
 
             String idCiudadanoFK = request.getParameter("idCiudadanoFK");

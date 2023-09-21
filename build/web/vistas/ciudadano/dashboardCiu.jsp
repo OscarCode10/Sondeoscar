@@ -9,6 +9,15 @@
         <title>Dashboard</title>
     </head>
     <body>
+        <%
+            String mensaje=(String)request.getAttribute("mensaje");
+        %>
+        
+        <c:if test="${mensaje eq !null}">
+            <script>
+                alert(`${mensaje}`)
+            </script>
+        </c:if>
         <h1>Hola ciudadano</h1>
         <a href="Participacion?opcion=verParticipaciones&textIdCiudadanoFK=1" class="btn btn-primary">Ver mis participaciones</a>
         <div class="row">

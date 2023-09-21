@@ -2,16 +2,30 @@ package controller;
 
 import java.io.IOException;
 import java.util.List;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelDAO.CorreoDAO;
 import modelDAO.ParticipacionDAO;
 import modelVO.ParticipacionVO;
 
 @WebServlet(urlPatterns = {"/Participacion"})
 public class ParticipacionController extends HttpServlet {
+    private String host;
+    private String puerto;
+    private String usuario;
+    private String clave;
+
+    public void init() {
+        ServletContext context = getServletContext();
+        host = context.getInitParameter("host");
+        puerto = context.getInitParameter("puerto");
+        usuario = context.getInitParameter("usuario");
+        clave = context.getInitParameter("clave");
+    }
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,7 +53,13 @@ public class ParticipacionController extends HttpServlet {
         switch(opcion){
             case "Registrar":
                 if (partiDAO.insertar()) {
-                    request.getRequestDispatcher("PreguntasTemas?opcion=verSondeosC").forward(request, response);
+                    if(correo(request, response)){
+                        request.setAttribute("mensaje", "se envio el correo");
+                        request.getRequestDispatcher("PreguntasTemas?opcion=verSondeosC").forward(request, response);
+                    }else{
+                        request.setAttribute("mensaje", "no se pudo enviar el correo");
+                        request.getRequestDispatcher("PreguntasTemas?opcion=verSondeosC").forward(request, response);
+                    }
                 }else{
                     request.getRequestDispatcher("PreguntasTemas?opcion=registrar&textIdPreguntasTemas=${pre.getIdPreguntasTemas()}").forward(request, response);
                 }
@@ -56,6 +76,22 @@ public class ParticipacionController extends HttpServlet {
                 break;
         }
     }
+    public boolean correo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        boolean operacion=false;
+        //String receptor = request.getParameter("correoC");
+        String receptor = "mjava6808@gmail.com";
+        String asunto = "Participación completada, pdf";
+        String contenido = "Su participacion fue completada, puede generar su pdf en el apartado de sus participaciones";
+        try {
+            CorreoDAO.enviarCorreoInformativo(host, puerto, usuario, clave, receptor, asunto, contenido);
+            operacion=true;
+        } catch (Exception e) {
+            System.out.println("Error" + e.toString());
+        }finally{
+        }
+        return operacion;
+    }
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

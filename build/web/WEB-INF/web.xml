@@ -29,4 +29,22 @@
     <welcome-file-list>
         <welcome-file>faces/index.jsp</welcome-file>
     </welcome-file-list>
+    
+    <context-param>    
+        <param-name>host</param-name>
+        <param-value>smtp.gmail.com</param-value>
+    </context-param>  
+    
+    <context-param>    
+        <param-name>puerto</param-name>
+        <param-value>587</param-value>
+    </context-param> 
+    <context-param>    
+        <param-name>usuario</param-name>
+        <param-value>mjava6808@gmail.com</param-value>
+    </context-param> 
+    <context-param>    
+        <param-name>clave</param-name>
+        <param-value>bcsa lrgk ecpd wvzg</param-value>
+    </context-param>
 </web-app>

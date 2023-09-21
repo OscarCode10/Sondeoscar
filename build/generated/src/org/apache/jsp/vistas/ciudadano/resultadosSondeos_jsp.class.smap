@@ -1,0 +1,18 @@
+SMAP
+resultadosSondeos_jsp.java
+JSP
+*S JSP
+*F
++ 0 resultadosSondeos.jsp
+vistas/ciudadano/resultadosSondeos.jsp
++ 1 sesionC.jsp
+vistas/ciudadano/../sesionC.jsp
+*L
+1:50
+1#1,11:51
+12,4:63
+15,2:67
+17,10:70
+26,7:80
+2#0,12:86
+*E
